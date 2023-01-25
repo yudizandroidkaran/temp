@@ -6,6 +6,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? textInputType;
   final String hintText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final bool? obscureText;
   final TextEditingController textEditingController;
   final FormFieldValidator<String>? validator;
@@ -22,6 +23,7 @@ class CustomTextField extends StatefulWidget {
       this.textInputType,
       required this.hintText,
       this.prefixIcon,
+      this.suffixIcon,
       this.obscureText,
       required this.textEditingController,
       this.validator,
@@ -43,7 +45,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 4.w),
       child: TextFormField(
         textInputAction: widget.inputAction ?? TextInputAction.next,
         keyboardType: widget.textInputType ?? TextInputType.text,
@@ -54,6 +56,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         enabled: widget.enabled ?? true,
         autofocus: false,
         inputFormatters: widget.textInputFormatter,
+        onTap: widget.onClick != null ? widget.onClick!() : (){},
         style: TextStyle(fontSize: 12.sp),
         decoration: InputDecoration(
           hintText: widget.hintText,
@@ -61,7 +64,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           alignLabelWithHint: true,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           prefixIcon: widget.prefixIcon,
-          contentPadding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 0),
+          suffixIcon: widget.suffixIcon,
+          contentPadding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Theme.of(context).focusColor)),
           focusedBorder: OutlineInputBorder(

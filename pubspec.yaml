@@ -15,6 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   sizer: ^2.0.15
   group_radio_button: ^1.1.0
+  get: ^4.6.5
+  cached_network_image: ^3.1.0
+  permission_handler:
+  image_picker: ^0.8.4+3
 
 dev_dependencies:
   flutter_test:
